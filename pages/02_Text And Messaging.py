@@ -172,9 +172,9 @@ st.divider()
 previous_col, next_col = st.columns(2)
 
 with previous_col:
-    if st.button("<- Previous : Structure and Layout"):
-        st.switch_page("pages/Structure and Layout.py")
+    if st.button("<- Previous : Headings"):
+        st.switch_page("pages/01_Headings.py")
 
 with next_col:
-    if st.button("Next : Widgets ->"):
-        st.switch_page("pages/Widgets.py")
+    if st.button("Next : Structure and Layout ->"):
+        st.switch_page("pages/03_Structure and Layout.py")

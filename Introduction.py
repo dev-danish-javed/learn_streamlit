@@ -69,5 +69,5 @@ get_custom_css()
 st.divider()
 
 if st.button("Next : Headings \t->"):
-    st.switch_page("pages/Headings.py")
+    st.switch_page("pages/01_Headings.py")
 

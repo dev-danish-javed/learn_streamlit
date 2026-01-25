@@ -66,5 +66,5 @@ with previous_col:
         st.switch_page("Introduction.py")
 
 with next_col:
-    if st.button("Next : Structure ->"):
-        st.switch_page("pages/Structure and Layout.py")
+    if st.button("Next : Text and Messaging ->"):
+        st.switch_page("pages/02_Text And Messaging.py")
