@@ -63,3 +63,33 @@ def get_custom_css():
         unsafe_allow_html=True
     )
 
+def add_navigation(previous_page_title:str = None,
+                   previous_page:str = None,
+                   next_page_title:str = None,
+                   next_page:str = None):
+
+    st.divider()
+
+    if previous_page and next_page:
+        previous_col, next_col = st.columns(2)
+
+        if previous_page:
+            with previous_col:
+                if st.button(f"⮜ Previous : {previous_page_title}"):
+                    prev_page_path = f"pages/{previous_page}" if previous_page[0].isdigit() else previous_page
+                    st.switch_page(prev_page_path)
+
+        if next_page:
+            with next_col:
+                if st.button(f"Next : {next_page_title} ⮞"):
+                    next_page_path = f"pages/{next_page}" if next_page[0].isdigit() else next_page
+                    st.switch_page(next_page_path)
+    else:
+        if previous_page:
+            if st.button(f"⮜ Previous : {previous_page_title}"):
+                prev_page_path = f"pages/{previous_page}" if previous_page[0].isdigit() else previous_page
+                st.switch_page(prev_page_path)
+        if next_page:
+            if st.button(f"Next : {next_page_title} ⮞"):
+                next_page_path = f"pages/{next_page}" if next_page[0].isdigit() else next_page
+                st.switch_page(next_page_path)

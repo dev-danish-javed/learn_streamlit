@@ -1,10 +1,16 @@
 import streamlit as st
 import pandas as pd
 
-from utils import get_custom_css
+from utils import get_custom_css, add_navigation
 
 # Page config, page_title -> tab title, page_icon -> favicon, layout -> wide=container fulid, center=container (bootstrap)
 st.set_page_config(page_title='Streamlit Intro | Danish Javed', page_icon="👨🏻‍💻", layout='wide')
+st.sidebar.title("Streamlit Introduction")
+st.sidebar.markdown("""
+- [Introduction](#introduction)
+- [Installation](#installation) 
+- [Page Setup](#page-setup)
+""")
 
 # h1 tag. Page title. Should be used only once
 st.title("Streamlit Notes")
@@ -57,17 +63,6 @@ st.markdown("""
     - center = container
 """)
 
-
-st.sidebar.title("Streamlit Introduction")
-st.sidebar.markdown("""
-- [Introduction](#introduction)
-- [Installation](#installation) 
-- [Page Setup](#page-setup)
-""")
 get_custom_css()
 
-st.divider()
-
-if st.button("Next : Headings \t->"):
-    st.switch_page("pages/01_Headings.py")
-
+add_navigation(next_page="01_Headings.py", next_page_title="Headings")

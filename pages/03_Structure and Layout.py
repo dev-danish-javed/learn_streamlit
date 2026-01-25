@@ -1,8 +1,20 @@
 import streamlit as st
 
-from utils import get_custom_css
+from utils import get_custom_css, add_navigation
 
-st.set_page_config(page_title='Structure and Layout in Streamlit', page_icon="👨🏻‍💻", layout='wide')
+st.set_page_config(page_title='Structure and Layout in Streamlit | Danish Javed', page_icon="👨🏻‍💻", layout='wide')
+
+st.sidebar.title("Structure the layout")
+st.sidebar.markdown("""
+- [Columns](#columns)
+    - [Custom column width](#custom-column-width)
+- [Container](#container) 
+    - [Subheaders](#subheaders)
+- [Divider](#divider)
+- [Expanders](#expanders)
+- [Sidebars](#sidebars)
+""")
+
 st.header("""Structure the layout""")
 st.caption("Allows to provide structure our pages")
 
@@ -142,26 +154,10 @@ st.sidebar.markdown(""\"
 ""\")
 """)
 
-st.sidebar.title("Structure the layout")
-st.sidebar.markdown("""
-- [Columns](#columns)
-    - [Custom column width](#custom-column-width)
-- [Container](#container) 
-    - [Subheaders](#subheaders)
-- [Divider](#divider)
-- [Expanders](#expanders)
-- [Sidebars](#sidebars)
-""")
 get_custom_css()
 
-st.divider()
-
-previous_col, next_col = st.columns(2)
-
-with previous_col:
-    if st.button("<- Previous : Text And Messaging"):
-        st.switch_page("pages/02_Text And Messaging.py")
-
-with next_col:
-    if st.button("Next : Input Widgets ->"):
-        st.switch_page("pages/04_Input Widgets.py")
+add_navigation(previous_page="02_Text And Messaging.py",
+               previous_page_title="Text And Messaging",
+               next_page_title="Input Widgets",
+               next_page="04_Input Widgets.py"
+               )

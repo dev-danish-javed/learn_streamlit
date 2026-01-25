@@ -1,8 +1,8 @@
 import streamlit as st
 
-from utils import get_custom_css
+from utils import get_custom_css, add_navigation
 
-st.set_page_config(page_title='Headings in Streamlit', page_icon="👨🏻‍💻", layout='wide')
+st.set_page_config(page_title='Headings in Streamlit | Danish Javed', page_icon="👨🏻‍💻", layout='wide')
 
 st.title("Title and headings")
 st.divider()
@@ -57,14 +57,8 @@ st.sidebar.markdown("""
 """)
 get_custom_css()
 
-st.divider()
-
-previous_col, next_col = st.columns(2)
-
-with previous_col:
-    if st.button("<- Previous : Introduction"):
-        st.switch_page("Introduction.py")
-
-with next_col:
-    if st.button("Next : Text and Messaging ->"):
-        st.switch_page("pages/02_Text And Messaging.py")
+add_navigation(previous_page="Introduction.py",
+               previous_page_title="Introduction",
+               next_page_title="Text and Messaging",
+               next_page="02_Text And Messaging.py"
+               )

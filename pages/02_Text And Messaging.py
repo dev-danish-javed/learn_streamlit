@@ -1,9 +1,25 @@
+import time
+
 import streamlit as st
-from utils import get_custom_css
+from utils import get_custom_css, add_navigation
 import pandas as pd
 
-st.set_page_config(page_title='Text and Messaging in Streamlit', page_icon="👨🏻‍💻", layout='wide')
-st.header("Texts and messaging")
+st.set_page_config(page_title='Text and Messaging in Streamlit | Danish Javed', page_icon="👨🏻‍💻", layout='wide')
+
+
+st.sidebar.title("Text and Messaging")
+st.sidebar.markdown("""
+- [Write](#write)
+- [Markdown](#markdown) 
+    - [_Hack_](#hack)
+- [Code Block](#code-block)
+- [Text](#text)
+- [Callouts](#callouts)
+- [Empty](#empty)
+- [Dialogue](#dialogue)
+""")
+
+st.title("Texts and messaging")
 
 st.divider()
 
@@ -155,26 +171,70 @@ with exception_col:
     st.code("""st.exception(RuntimeError("This is a dummy exception"))""", language="python", width="content")
     st.exception(RuntimeError("This is a dummy exception"))
 
-st.sidebar.title("Text and Messaging")
-st.sidebar.markdown("""
-- [Write](#write)
-- [Markdown](#markdown) 
-    - [_Hack_](#hack)
-- [Code Block](#code-block)
-- [Text](#text)
-- [Callouts](#callouts)
+st.divider()
+st.header("Empty")
+st.write("""As weird as it might sound, it is actually one of the coolest stuff. 
+It allows only one line as output at once. Next line clears the previous one. Checkout the cool example below: """)
+
+st.code("""
+if st.button("Start timer 🕒"):
+    with st.empty():
+        for i in range(1, 11):
+            st.write(f"{'⌛' if i%2==0 else '⏳'} {i} seconds completed")
+            time.sleep(1)
+        else:
+            st.write("🕛 5 seconds completed")
 """)
 
-get_custom_css()
+if st.button("Start timer 🕒"):
+    with st.empty():
+        for i in range(1, 6):
+            st.write(f"{'⌛' if i%2==0 else '⏳'} {i} seconds completed")
+            time.sleep(1)
+        else:
+            st.write("🕛 5 seconds completed")
 
 st.divider()
 
-previous_col, next_col = st.columns(2)
+st.header("Dialogue")
+st.caption("Simple html modal")
 
-with previous_col:
-    if st.button("<- Previous : Headings"):
-        st.switch_page("pages/01_Headings.py")
+st.write("""
+Important parameters : 
+- title : Modal title
+- width : Modal width
+- dismiss : If modal can be dismissed (use case of false would be to block user journey, like session time out)
+- on_dismiss : Function to be called when modal is closed
+""")
 
-with next_col:
-    if st.button("Next : Structure and Layout ->"):
-        st.switch_page("pages/03_Structure and Layout.py")
+st.code("""
+def dismiss_handler():
+    st.write("Modal closed")
+
+@st.dialog(title="Test Modal", width="medium", dismissible=True, on_dismiss=dismiss_handler)
+def open_dialogue():
+    st.divider()
+    st.write("Yeah here is the modal")
+""")
+
+st.write("> **Renders this 👇🏻, click the button below to open the modal**")
+
+def dismiss_handler():
+    st.write("Modal closed")
+
+@st.dialog(title="Test Modal", width="medium", dismissible=True, on_dismiss=dismiss_handler)
+def open_dialogue():
+    st.divider()
+    st.write("Yeah here is the modal")
+
+
+if st.button("Open dialogue"):
+    open_dialogue()
+
+get_custom_css()
+
+add_navigation(previous_page="01_Headings.py",
+               previous_page_title="Headings",
+               next_page_title="Structure and Layout",
+               next_page="03_Structure and Layout.py"
+               )
