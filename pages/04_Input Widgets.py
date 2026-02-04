@@ -1,6 +1,6 @@
 import streamlit as st
 
-from utils import get_custom_css, add_navigation
+from utils import attach_custom_css, add_navigation
 
 st.set_page_config(page_title="Input widgets in Streamlit | Danish Javed", layout="wide", page_icon="👨🏻‍💻")
 st.sidebar.title("Input Widgets")
@@ -242,7 +242,7 @@ if st.button("Increase counter"):
     with st.empty():
         st.write("Counter value : ", st.session_state.counter)
 
-get_custom_css()
+attach_custom_css()
 
 add_navigation(previous_page="03_Structure and Layout.py",
                previous_page_title="Structure and Layout",

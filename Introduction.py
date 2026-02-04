@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-from utils import get_custom_css, add_navigation
+from utils import attach_custom_css, add_navigation
 
 # Page config, page_title -> tab title, page_icon -> favicon, layout -> wide=container fulid, center=container (bootstrap)
 st.set_page_config(page_title='Streamlit Intro | Danish Javed', page_icon="👨🏻‍💻", layout='wide')
@@ -63,6 +63,6 @@ st.markdown("""
     - center = container
 """)
 
-get_custom_css()
+attach_custom_css()
 
 add_navigation(next_page="01_Headings.py", next_page_title="Headings")

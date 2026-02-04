@@ -1,6 +1,6 @@
 import streamlit as st
 
-def get_custom_css():
+def attach_custom_css():
     return st.sidebar.markdown(
         """
         <style>
@@ -18,7 +18,7 @@ def get_custom_css():
                 font-size: 0.875rem;
                 padding: 0.25rem 0;
                 display: inline-block;
-                border-left: 3px solid transparent;
+                border-left: 0.3rem solid transparent;
                 padding-left: 0.5rem;
                 transition: all 0.15s ease-in-out;
                 border-radius: 0.5rem;
@@ -29,6 +29,7 @@ def get_custom_css():
             div[data-testid="stSidebarUserContent"] a:hover {
                 color: var(--primary-color);
                 border-left-color: teal;
+                padding-left: 1rem;
                 background-color: rgba(0, 0, 0, 0.03);
             }
             h1, h2, h3, h4, h5, h6 {

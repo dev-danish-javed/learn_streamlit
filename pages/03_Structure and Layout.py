@@ -1,6 +1,6 @@
 import streamlit as st
 
-from utils import get_custom_css, add_navigation
+from utils import attach_custom_css, add_navigation
 
 st.set_page_config(page_title='Structure and Layout in Streamlit | Danish Javed', page_icon="👨🏻‍💻", layout='wide')
 
@@ -154,7 +154,7 @@ st.sidebar.markdown(""\"
 ""\")
 """)
 
-get_custom_css()
+attach_custom_css()
 
 add_navigation(previous_page="02_Text And Messaging.py",
                previous_page_title="Text And Messaging",

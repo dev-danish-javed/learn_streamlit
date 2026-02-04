@@ -1,6 +1,6 @@
 import streamlit as st
 
-from utils import get_custom_css, add_navigation
+from utils import attach_custom_css, add_navigation
 
 st.set_page_config(page_title='Headings in Streamlit | Danish Javed', page_icon="👨🏻‍💻", layout='wide')
 
@@ -55,7 +55,7 @@ st.sidebar.markdown("""
 - [Divider](#divider)
 - [Captions](#captions)
 """)
-get_custom_css()
+attach_custom_css()
 
 add_navigation(previous_page="Introduction.py",
                previous_page_title="Introduction",

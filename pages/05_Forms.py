@@ -2,7 +2,7 @@ import time
 
 import streamlit as st
 
-from utils import add_navigation, get_custom_css
+from utils import add_navigation, attach_custom_css
 
 st.set_page_config(page_title="Forms in Streamlit | Danish Javed", layout="wide", page_icon="👨🏻‍💻")
 
@@ -134,7 +134,7 @@ if submitted:
 
 
 
-get_custom_css()
+attach_custom_css()
 add_navigation(previous_page="04_Input Widgets.py",
                previous_page_title="Input Widgets",
                next_page="pages/06_Data Display.py",

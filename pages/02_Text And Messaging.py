@@ -1,7 +1,7 @@
 import time
 
 import streamlit as st
-from utils import get_custom_css, add_navigation
+from utils import attach_custom_css, add_navigation
 import pandas as pd
 
 st.set_page_config(page_title='Text and Messaging in Streamlit | Danish Javed', page_icon="👨🏻‍💻", layout='wide')
@@ -231,7 +231,7 @@ def open_dialogue():
 if st.button("Open dialogue"):
     open_dialogue()
 
-get_custom_css()
+attach_custom_css()
 
 add_navigation(previous_page="01_Headings.py",
                previous_page_title="Headings",

@@ -3,7 +3,7 @@ import pandas as pd
 from matplotlib.dates import DateFormatter
 from typing_extensions import Format
 
-from utils import add_navigation, get_custom_css
+from utils import add_navigation, attach_custom_css
 
 st.set_page_config(page_title="Data Display in Streamlit | Danish Javed", layout="wide", page_icon="👨🏻‍💻")
 
@@ -73,7 +73,7 @@ with col2:
         label="Customer Exit",
         value="12",
         delta="2%",
-        chart_data=[20,15,10,12],
+        chart_data=[4,10,6,8,20,15,10,12,4,10,6,8,20,15,10,12],
         chart_type="bar",
         delta_color="inverse"
     )
@@ -87,6 +87,35 @@ with col3:
         chart_type="area"
     )
     pass
+
+st.divider()
+
+st.header("Table")
+st.write("""Its a simple table, no additional features. We have 2 simple parameters
+- data
+- border : True|False|Horizontal
+&nbsp;  
+&nbsp;  
+**Sample code 👇🏻**
+""")
+
+st.code("""
+df = pd.DataFrame({
+    "date": pd.date_range("2026-01-01", periods=7).date,
+    "revenue": [120, 150, 100, 180, 160, 220, 200],
+    "users": [80, 95, 70, 110, 105, 140, 130],
+    "conversion_rate": [3.2, 3.5, 2.9, 4.1, 3.8, 4.5, 4.3]
+})
+st.table(data=df,border="horizontal")
+""")
+st.write("> **Renders the table below 👇🏻**")
+df = pd.DataFrame({
+    "date": pd.date_range("2026-01-01", periods=7).date,
+    "revenue": [120, 150, 100, 180, 160, 220, 200],
+    "users": [80, 95, 70, 110, 105, 140, 130],
+    "conversion_rate": [3.2, 3.5, 2.9, 4.1, 3.8, 4.5, 4.3]
+})
+st.table(data=df,border="horizontal")
 
 st.divider()
 
@@ -145,36 +174,14 @@ st.dataframe(
     row_height=40,
 )
 
-st.divider()
-
-st.header("Table")
-st.write("""Its a simple table, no additional features. We have 2 simple parameters
-- data
-- border : True|False|Horizontal
-&nbsp;  
-&nbsp;  
-**Sample code 👇🏻**
-""")
-
-st.code("""
-
-""")
-
-df = pd.DataFrame({
-    "date": pd.date_range("2026-01-01", periods=7).date,
-    "revenue": [120, 150, 100, 180, 160, 220, 200],
-    "users": [80, 95, 70, 110, 105, 140, 130],
-    "conversion_rate": [3.2, 3.5, 2.9, 4.1, 3.8, 4.5, 4.3]
-})
-st.table(data=df,border="horizontal")
-
 
 
 st.sidebar.title("Data Display")
 st.sidebar.markdown("""
 - [Metrics](#metrics)
+- [Table](#table)
 - [Dataframe](#dataframe)
 """)
 
-get_custom_css()
+attach_custom_css()
 add_navigation(previous_page="05_Forms.py", previous_page_title="Forms")
