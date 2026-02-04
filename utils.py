@@ -1,6 +1,11 @@
 import streamlit as st
 
 def attach_custom_css():
+    st.logo(
+        icon_image="images/app_logo.png",
+        image="images/app_title.png",
+        link="https://www.devdanish.in"
+    )
     return st.sidebar.markdown(
         """
         <style>

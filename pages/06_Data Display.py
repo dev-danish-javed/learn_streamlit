@@ -7,7 +7,6 @@ from utils import add_navigation, attach_custom_css
 
 st.set_page_config(page_title="Data Display in Streamlit | Danish Javed", layout="wide", page_icon="👨🏻‍💻")
 
-
 st.title("Data Display")
 st.caption("Now we are hitting the real deal.")
 
@@ -174,6 +173,43 @@ st.dataframe(
     row_height=40,
 )
 
+st.divider()
+
+st.header('JSON viewer')
+st.write("""Displays json in simple format. We have only 2 simple parameters
+- body : The json data
+- expanded : _default True_, if it has to remains expanded by default
+
+The code below 👇🏻
+""")
+st.code("""
+json_data = {
+    "user": "danish",
+    "active": True,
+    "roles": ["admin", "editor"],
+    "stats": {
+        "logins": 42,
+        "last_login": "2026-01-09"
+    }
+}
+
+st.json(body=json_data, expanded=False)
+""")
+
+st.write("> **Renders the content as below 👇🏻**")
+json_data = {
+    "user": "danish",
+    "active": True,
+    "roles": ["admin", "editor"],
+    "stats": {
+        "logins": 42,
+        "last_login": "2026-01-09"
+    }
+}
+
+st.json(body=json_data, expanded=False)
+
+
 
 
 st.sidebar.title("Data Display")
@@ -181,7 +217,9 @@ st.sidebar.markdown("""
 - [Metrics](#metrics)
 - [Table](#table)
 - [Dataframe](#dataframe)
+- [JSON Viewer](#json-viewer)
 """)
 
 attach_custom_css()
-add_navigation(previous_page="05_Forms.py", previous_page_title="Forms")
+add_navigation(previous_page="05_Forms.py", previous_page_title="Forms",
+               next_page="07_Charts.py", next_page_title="Charts")
