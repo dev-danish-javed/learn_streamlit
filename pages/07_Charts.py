@@ -10,7 +10,21 @@ st.title("Charts")
 st.write("""Streamlit provides only three charts types natively
 - Line Chart
 - Bar Chart
-- Area Chart""")
+- Area Chart
+
+&nbsp;  
+&nbsp;
+There are some common parameters that can be used to customize these chart.
+- use_container_width=True|False, default True, when use entire available width
+- width=600
+- height=300,
+- x= The property to be used as x-axis,
+- y= The property to be used as y-axis,
+- x_label=Label for x-axis,
+- y_label=label for y-axis,
+- color=array of hex colors for the graph
+
+""")
 
 st.divider()
 st.header("Line Chart")
