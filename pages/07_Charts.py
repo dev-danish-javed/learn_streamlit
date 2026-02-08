@@ -5,6 +5,13 @@ import pandas as pd
 from utils import attach_custom_css, add_navigation, set_page_config
 
 set_page_config(page_title="Charts in Streamlit | Danish Javed")
+st.sidebar.title("Charts")
+st.sidebar.markdown("""
+- [Line Chart](#line-chart)
+- [Bar Chart](#bar-chart)
+- [Area Chart](#area-chart)
+""")
+
 
 st.title("Charts")
 st.write("""Streamlit provides only three charts types natively

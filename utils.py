@@ -1,12 +1,12 @@
 import streamlit as st
 
 def set_page_config(page_title:str, layout:str="wide"):
-    st.set_page_config(page_title=page_title, layout=layout, page_icon="images/app_logo.png")
+    st.set_page_config(page_title=page_title, layout=layout, page_icon="assets/app_logo.png")
 
 def attach_custom_css():
     st.logo(
-        icon_image="images/app_logo.png",
-        image="images/app_title.png",
+        icon_image="assets/app_logo.png",
+        image="assets/app_title.png",
         link="https://technotes.devdanish.in"
     )
     st.sidebar.markdown(
