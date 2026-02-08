@@ -1,8 +1,8 @@
 import streamlit as st
 
-from utils import attach_custom_css, add_navigation
+from utils import attach_custom_css, add_navigation, set_page_config
 
-st.set_page_config(page_title='Structure and Layout in Streamlit | Danish Javed', page_icon="👨🏻‍💻", layout='wide')
+set_page_config(page_title='Structure and Layout in Streamlit | Danish Javed')
 
 st.sidebar.title("Structure the layout")
 st.sidebar.markdown("""
@@ -81,7 +81,7 @@ with st.container():
     st.text("This is inside a container")
 
 """, language="python")
-st.text("Rendered as 👇🏻, notice that nothing fancy is happening here")
+st.text("Rendered as :material/keyboard_double_arrow_down:, notice that nothing fancy is happening here")
 with st.container():
     st.text("This is inside a container")
 
@@ -96,7 +96,7 @@ def greet_person(name:str):
 greet_person("Elon")
 greet_person("Mr Trump")
 """)
-st.text('Renders 👇🏻')
+st.text('Renders :material/keyboard_double_arrow_down:')
 
 
 def greet_person(name: str):
@@ -120,7 +120,7 @@ with st.expander("Summary"):
     st.text("Blah blah " * 150)
 """, language="python")
 
-st.text("Renders this 👇🏻")
+st.text("Renders this :material/keyboard_double_arrow_down:")
 
 with st.expander("Summary"):
     st.text("This is expander content")

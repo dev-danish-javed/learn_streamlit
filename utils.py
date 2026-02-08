@@ -1,12 +1,15 @@
 import streamlit as st
 
+def set_page_config(page_title:str, layout:str="wide"):
+    st.set_page_config(page_title=page_title, layout=layout, page_icon="images/app_logo.png")
+
 def attach_custom_css():
     st.logo(
         icon_image="images/app_logo.png",
         image="images/app_title.png",
-        link="https://www.devdanish.in"
+        link="https://technotes.devdanish.in"
     )
-    return st.sidebar.markdown(
+    st.sidebar.markdown(
         """
         <style>
         
@@ -37,7 +40,7 @@ def attach_custom_css():
                 padding-left: 1rem;
                 background-color: rgba(0, 0, 0, 0.03);
             }
-            h1, h2, h3, h4, h5, h6 {
+            h1, h2, h3, h4 {
                 color: teal !important;
             }
             
@@ -52,7 +55,7 @@ def attach_custom_css():
                     border-left-color: MediumAquaMarine;
                     background-color: rgba(255, 255, 255, 0.05);
                 }
-                h1, h2, h3, h4, h5, h6 {
+                h1, h2, h3, h4{
                     color: MediumAquaMarine !important;
                 }
                 p, .stText>span, ul {
@@ -77,25 +80,25 @@ def add_navigation(previous_page_title:str = None,
     st.divider()
 
     if previous_page and next_page:
-        previous_col, next_col = st.columns(2)
+        previous_col, x, next_col = st.columns(3)
 
         if previous_page:
             with previous_col:
-                if st.button(f"<- Previous : {previous_page_title}"):
+                if st.button(f":material/arrow_back_ios: Previous : {previous_page_title}"):
                     prev_page_path = f"pages/{previous_page}" if previous_page[0].isdigit() else previous_page
                     st.switch_page(prev_page_path)
 
         if next_page:
             with next_col:
-                if st.button(f"Next : {next_page_title} ->"):
+                if st.button(f"Next : {next_page_title} :material/arrow_forward_ios:"):
                     next_page_path = f"pages/{next_page}" if next_page[0].isdigit() else next_page
                     st.switch_page(next_page_path)
     else:
         if previous_page:
-            if st.button(f"<- Previous : {previous_page_title}"):
+            if st.button(f":material/arrow_back_ios: Previous : {previous_page_title}"):
                 prev_page_path = f"pages/{previous_page}" if previous_page[0].isdigit() else previous_page
                 st.switch_page(prev_page_path)
         if next_page:
-            if st.button(f"Next : {next_page_title} ->"):
+            if st.button(f"Next : {next_page_title} :material/arrow_forward_ios:"):
                 next_page_path = f"pages/{next_page}" if next_page[0].isdigit() else next_page
                 st.switch_page(next_page_path)

@@ -1,10 +1,10 @@
 import streamlit as st
 import pandas as pd
 
-from utils import attach_custom_css, add_navigation
+from utils import attach_custom_css, add_navigation, set_page_config
 
 # Page config, page_title -> tab title, page_icon -> favicon, layout -> wide=container fulid, center=container (bootstrap)
-st.set_page_config(page_title='Streamlit Intro | Danish Javed', page_icon="👨🏻‍💻", layout='wide')
+set_page_config(page_title='Streamlit Intro | Danish Javed')
 st.sidebar.title("Streamlit Introduction")
 st.sidebar.markdown("""
 - [Introduction](#introduction)
@@ -16,7 +16,7 @@ st.sidebar.markdown("""
 st.title("Streamlit Notes")
 # Wrties muted text, great for providing containt
 st.caption("A sample streamlit page to demo commonly used elements")
-st.page_link(icon="🔗", page="https://www.devdanish.in", label="by Danish Javed", help="Learn more about the author")
+st.page_link(icon=":material/link:", page="https://www.devdanish.in", label="Danish Javed", help="Learn more about the author")
 
 # hr tag
 st.divider()
@@ -42,7 +42,7 @@ st.subheader("Installation")
 st.text("Let's get started with installation first.")
 col1, col2 = st.columns(2)
 with col1:
-    st.text(" Add \"streamlit\" in requirements.txt and run command below 👇🏻")
+    st.text(" Add \"streamlit\" in requirements.txt and run command below :material/keyboard_double_arrow_down:")
     st.code("pip install -r requirements.txt")
 with col2:
     st.write("Or simply do ")

@@ -1,10 +1,10 @@
 import time
 
 import streamlit as st
-from utils import attach_custom_css, add_navigation
+from utils import attach_custom_css, add_navigation, set_page_config
 import pandas as pd
 
-st.set_page_config(page_title='Text and Messaging in Streamlit | Danish Javed', page_icon="👨🏻‍💻", layout='wide')
+set_page_config(page_title='Text and Messaging in Streamlit | Danish Javed')
 
 
 st.sidebar.title("Text and Messaging")
@@ -35,7 +35,7 @@ st.write("""
 - Matplotlib / Plotly fig → chart
 - Multiple args → spaced output
 """)
-st.text("Code for this 👆🏻 is here 👇🏻")
+st.text("Code for this 👆🏻 is here :material/keyboard_double_arrow_down:")
 st.code(body="""
     st.write(\"""
     - String → text / markdown
@@ -104,7 +104,7 @@ st.code("""
 st.markdown("We can also render html in streamlit, which we shouldn't unless its a must. Here is an example"
             "<span style=\"color:red\">This is html<span>", unsafe_allow_html=True)
 """)
-st.text("Renders 👇🏻")
+st.text("Renders :material/keyboard_double_arrow_down:")
 st.markdown("<span style=\"color:red\">This is html<span>", unsafe_allow_html=True)
 
 st.divider()
@@ -215,18 +215,19 @@ def dismiss_handler():
 def open_dialogue():
     st.divider()
     st.write("Yeah here is the modal")
+
+if st.button("Open dialogue"):
+    open_dialogue()
 """)
 
-st.write("> **Renders this 👇🏻, click the button below to open the modal**")
+st.write("> **Renders this :material/keyboard_double_arrow_down:, click the button below to open the modal**")
 
 def dismiss_handler():
     st.write("Modal closed")
 
 @st.dialog(title="Test Modal", width="medium", dismissible=True, on_dismiss=dismiss_handler)
 def open_dialogue():
-    st.divider()
     st.write("Yeah here is the modal")
-
 
 if st.button("Open dialogue"):
     open_dialogue()

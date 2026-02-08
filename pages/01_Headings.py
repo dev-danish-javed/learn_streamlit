@@ -1,8 +1,8 @@
 import streamlit as st
 
-from utils import attach_custom_css, add_navigation
+from utils import attach_custom_css, add_navigation, set_page_config
 
-st.set_page_config(page_title='Headings in Streamlit | Danish Javed', page_icon="👨🏻‍💻", layout='wide')
+set_page_config(page_title='Headings in Streamlit | Danish Javed')
 
 st.title("Title and headings")
 st.divider()

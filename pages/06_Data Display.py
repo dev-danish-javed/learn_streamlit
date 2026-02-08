@@ -1,14 +1,12 @@
 import streamlit as st
 import pandas as pd
-from matplotlib.dates import DateFormatter
-from typing_extensions import Format
 
-from utils import add_navigation, attach_custom_css
+from utils import add_navigation, attach_custom_css, set_page_config
 
-st.set_page_config(page_title="Data Display in Streamlit | Danish Javed", layout="wide", page_icon="👨🏻‍💻")
+set_page_config(page_title="Data Display in Streamlit | Danish Javed")
 
 st.title("Data Display")
-st.caption("Now we are hitting the real deal.")
+st.caption("Now these are the actual stuff that we'll see more often")
 
 st.divider()
 
@@ -21,7 +19,7 @@ Metrics displays the KPIs. We have some very useful options:
 - `delta_color` : "inverse" | "normal" | "off" -> By default, postive value is considered good and is green, we can change the nature with inverse or disable it with off
 - `delta-arrow` : "up" | "down" |  "off" | "auto"
 
-> **Checkout the sample code below 👇🏻**
+> **Checkout the sample code below :material/keyboard_double_arrow_down:**
 """)
 
 st.code("""
@@ -56,7 +54,7 @@ with col3:
     pass
 """)
 
-st.write("> **Renders as below 👇🏻**")
+st.write("> **Renders as below :material/keyboard_double_arrow_down:**")
 
 col1, col2, col3 = st.columns(3)
 with col1:
@@ -95,7 +93,7 @@ st.write("""Its a simple table, no additional features. We have 2 simple paramet
 - border : True|False|Horizontal
 &nbsp;  
 &nbsp;  
-**Sample code 👇🏻**
+**Sample code :material/keyboard_double_arrow_down:**
 """)
 
 st.code("""
@@ -107,7 +105,7 @@ df = pd.DataFrame({
 })
 st.table(data=df,border="horizontal")
 """)
-st.write("> **Renders the table below 👇🏻**")
+st.write("> **Renders the table below :material/keyboard_double_arrow_down:**")
 df = pd.DataFrame({
     "date": pd.date_range("2026-01-01", periods=7).date,
     "revenue": [120, 150, 100, 180, 160, 220, 200],
@@ -137,7 +135,7 @@ We have some cool optoins here
 
 &nbsp;  
 
-**Sample code 👇🏻**
+**Sample code :material/keyboard_double_arrow_down:**
 
 """)
 
@@ -157,7 +155,7 @@ st.dataframe(
 )
 """)
 
-st.write("> **Renders the table below 👇🏻**")
+st.write("> **Renders the table below :material/keyboard_double_arrow_down:**")
 
 df = pd.DataFrame({
     "date": pd.date_range("2026-01-01", periods=7).date,
@@ -180,7 +178,7 @@ st.write("""Displays json in simple format. We have only 2 simple parameters
 - body : The json data
 - expanded : _default True_, if it has to remains expanded by default
 
-The code below 👇🏻
+The code below :material/keyboard_double_arrow_down:
 """)
 st.code("""
 json_data = {
@@ -196,7 +194,7 @@ json_data = {
 st.json(body=json_data, expanded=False)
 """)
 
-st.write("> **Renders the content as below 👇🏻**")
+st.write("> **Renders the content as below :material/keyboard_double_arrow_down:**")
 json_data = {
     "user": "danish",
     "active": True,
@@ -208,6 +206,14 @@ json_data = {
 }
 
 st.json(body=json_data, expanded=False)
+
+st.write("> ##### But the way its most commonly used is with expanders like below :material/keyboard_double_arrow_down:")
+st.code("""
+with st.expander("See raw data"):
+    st.json(body=json_data)
+""")
+with st.expander("See raw data"):
+    st.json(body=json_data)
 
 
 

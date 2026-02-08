@@ -2,9 +2,9 @@ import time
 
 import streamlit as st
 
-from utils import add_navigation, attach_custom_css
+from utils import add_navigation, attach_custom_css, set_page_config
 
-st.set_page_config(page_title="Forms in Streamlit | Danish Javed", layout="wide", page_icon="👨🏻‍💻")
+set_page_config(page_title="Forms in Streamlit | Danish Javed")
 
 st.sidebar.title("Forms")
 st.sidebar.markdown("""
@@ -101,7 +101,7 @@ if submitted:
 
 """)
 
-st.write("> **Renders this form below 👇🏻**")
+st.write("> **Renders this form below :material/keyboard_double_arrow_down:**")
 
 if "submitted" not in st.session_state:
     st.session_state.submitted = False

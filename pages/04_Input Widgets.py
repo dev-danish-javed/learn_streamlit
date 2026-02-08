@@ -1,8 +1,8 @@
 import streamlit as st
 
-from utils import attach_custom_css, add_navigation
+from utils import attach_custom_css, add_navigation, set_page_config
 
-st.set_page_config(page_title="Input widgets in Streamlit | Danish Javed", layout="wide", page_icon="👨🏻‍💻")
+set_page_config(page_title="Input widgets in Streamlit | Danish Javed")
 st.sidebar.title("Input Widgets")
 st.sidebar.markdown("""
 - [Input](#input)
@@ -56,7 +56,7 @@ st.write(f""\"
 ""\")
 """)
 
-st.caption("**Renders the content below** 👇🏻. Try to input something in the fields")
+st.caption("**Renders the content below** :material/keyboard_double_arrow_down:. Try to input something in the fields")
 
 email = st.text_input(
     label="Email",
@@ -109,7 +109,7 @@ num = st.number_input(label="How many projects have you delivered on ?", step=1.
 st.write("Hike (_5x % of projects_) : ", str(num*5), '%')
 """)
 
-st.write("""> **Renders** 👇🏻""")
+st.write("""> **Renders** :material/keyboard_double_arrow_down:""")
 
 num = st.number_input(label="How many projects have you delivered on ?", step=1.0, min_value=1.0, max_value=5.0,
                       help="Your hike will be 5x percent of the number of projects you delivered")
@@ -125,7 +125,7 @@ volume = st.slider(label="Select volume", min_value=1, max_value=5, step=1, help
 st.write("Selected volume : ", str(volume))
 """)
 
-st.write("> **Renders this 👇🏻**")
+st.write("> **Renders this :material/keyboard_double_arrow_down:**")
 
 volume = st.slider(label="Select volume", min_value=1, max_value=100, step=1, help="Select volume")
 st.write("Selected volume : ", str(volume))
@@ -135,7 +135,7 @@ temprature = st.slider(label="Select temperature", min_value=0.2, max_value=1.0,
 st.write("Selected temprature : ", str(temprature))
 """)
 
-st.write("> **Renders this 👇🏻**")
+st.write("> **Renders this :material/keyboard_double_arrow_down:**")
 
 temprature = st.slider(label="Select temperature", min_value=0.2, max_value=1.0, step=0.05, help="Select temperature")
 st.write("Selected temprature : ", str(temprature))
@@ -158,7 +158,7 @@ region = st.selectbox(label="Region", options=["US", "EU", "India"],
 st.write("Selected region : ", region)
 """)
 
-st.write("> **Renders this 👇🏻**")
+st.write("> **Renders this :material/keyboard_double_arrow_down:**")
 
 region = st.selectbox(label="Region", options=["US", "EU", "India"],
                       index=0, help="Server would be deployed in the region")
@@ -184,7 +184,7 @@ st.code("""
 user_agrees = st.checkbox("Opt for our newsletter", value=True)
 st.write("Cool, we'll keep you updated" if user_agrees else "You'll miss important updates from ourside")
 """)
-st.write("> **Renders this 👇🏻**")
+st.write("> **Renders this :material/keyboard_double_arrow_down:**")
 user_agrees = st.checkbox("Opt for our newsletter", value=True)
 st.write("Cool, we'll keep you updated" if user_agrees else "You'll miss important updates from ourside")
 
@@ -198,7 +198,7 @@ user_gender = st.radio(label="Gender", options=["Male", "Female", "Trans", "Non 
 st.write("Selected gender : ", user_gender)
 """)
 
-st.write("> **Renders this 👇🏻**")
+st.write("> **Renders this :material/keyboard_double_arrow_down:**")
 
 user_gender = st.radio(label="Gender", options=["Male", "Female", "Trans", "Non Binary", "Yet to decide"], index=None, help="Select you gender")
 st.write("Selected gender : ", user_gender)
@@ -213,7 +213,7 @@ is_public_profile = st.toggle(label="Public profile", help="Your profile be avai
 st.write(f"Your profile {"**not**" if not is_public_profile else ""} will be listed in web search results")
 """)
 
-st.write("> **Renders this 👇🏻**")
+st.write("> **Renders this :material/keyboard_double_arrow_down:**")
 is_public_profile = st.toggle(label="Public profile", help="Your profile be availabe on web search results")
 st.write(f"Your profile {"**not**" if not is_public_profile else ""} will be listed in web search results")
 
@@ -232,7 +232,7 @@ if st.button("Increase counter"):
         st.write("Counter value : ", st.session_state.counter)
 """)
 
-st.write("> **Renders this 👇🏻, focus only on button trigger the update**")
+st.write("> **Renders this :material/keyboard_double_arrow_down:, focus only on button trigger the update**")
 
 if "counter" not in st.session_state:
     st.session_state.counter = 0
