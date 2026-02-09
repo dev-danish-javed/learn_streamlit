@@ -222,12 +222,15 @@ if st.button("Open dialogue"):
 
 st.write("> **Renders this :material/keyboard_double_arrow_down:, click the button below to open the modal**")
 
-def dismiss_handler():
-    st.write("Modal closed")
+st.write("> ##### Modal status : ", st.session_state.get("modal_status", "Not opened yet"))
 
-@st.dialog(title="Test Modal", width="medium", dismissible=True, on_dismiss=dismiss_handler)
+def dismiss_handler():
+    # don't worry about the session_state yet, we'll talk about it later'
+    st.session_state.modal_status = "Dismissed"
+
+@st.dialog(title="Sample Modal", width="medium", dismissible=True, on_dismiss=dismiss_handler)
 def open_dialogue():
-    st.write("Yeah here is the modal")
+    st.write("This is modal body")
 
 if st.button("Open dialogue"):
     open_dialogue()

@@ -225,4 +225,4 @@ with polished_are_chart:
                  color=["#4f819c", "#939c4f"])
 
 attach_custom_css()
-add_navigation(previous_page_title="Data Display", previous_page="06_Data Display.py")
+add_navigation(previous_page_title="Data Display", previous_page="06_Data Display.py", next_page_title="Media", next_page="pages/08_Media.py")
