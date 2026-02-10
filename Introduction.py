@@ -1,6 +1,8 @@
-import streamlit as st
-import pandas as pd
+import logging
 
+import streamlit as st
+
+from email_util import send_mail, send_welcome_mail
 from utils import attach_custom_css, add_navigation, set_page_config
 
 # Page config, page_title -> tab title, page_icon -> favicon, layout -> wide=container fulid, center=container (bootstrap)
@@ -70,12 +72,35 @@ st.markdown("""
 
 @st.dialog(title="Welcome, Reader", width="medium", dismissible=True)
 def collect_user_name():
-    user_name = st.text_input("Please provide your name for custom experience")
+    with st.form(key="user_form", enter_to_submit=False):
+        user_name = st.text_input(label= "Your name", placeholder="Enter name for custom experience")
+        user_email = st.text_input(label="Email", placeholder="Please provide your email, won't spam 🤞🏻")
+        st.form_submit_button("Enter")
+    if user_email:
+        st.session_state.user_email = user_email
+        pass
     if user_name:
         st.session_state.user_name = user_name
         st.rerun()
+
+
 if "user_name" not in st.session_state:
     collect_user_name()
+else:
+    if "user_reported" not in st.session_state:
+        try:
+            send_mail(to=st.secrets["SMTP_USER_NAME"], subject=f"Add {st.session_state.user_name} on LinkedIn",
+                  body=f"Hi, {st.session_state.user_name} viewed you streamlit notes, consider adding them on LinkedIn")
+            st.session_state.user_reported = True
+        except Exception as e:
+            pass
+if "user_email" in st.session_state:
+    if "user_greeted" not in st.session_state:
+        try:
+            send_welcome_mail(user_email=st.session_state.user_email)
+            st.session_state.user_greeted = True
+        except Exception as e:
+            pass
 
 attach_custom_css()
 

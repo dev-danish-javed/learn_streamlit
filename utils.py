@@ -1,4 +1,6 @@
 import streamlit as st
+import logging
+import sys
 
 def set_page_config(page_title:str, layout:str="wide"):
     st.set_page_config(page_title=page_title, layout=layout, page_icon="assets/app_logo.png")
@@ -102,3 +104,16 @@ def add_navigation(previous_page_title:str = None,
             if st.button(f"Next : {next_page_title} :material/arrow_forward_ios:"):
                 next_page_path = f"pages/{next_page}" if next_page[0].isdigit() else next_page
                 st.switch_page(next_page_path)
+def get_logger(name="app"):
+    logger = logging.getLogger(name)
+    logger.setLevel(logging.INFO)
+
+    if not logger.handlers:
+        handler = logging.StreamHandler(sys.stdout)
+        formatter = logging.Formatter(
+            "[%(asctime)s] [%(levelname)s] %(name)s: %(message)s"
+        )
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
+
+    return logger
