@@ -5,6 +5,7 @@ from utils import attach_custom_css, add_navigation, set_page_config
 
 # Page config, page_title -> tab title, page_icon -> favicon, layout -> wide=container fulid, center=container (bootstrap)
 set_page_config(page_title='Streamlit Intro | Danish Javed')
+
 st.sidebar.title("Streamlit Introduction")
 st.sidebar.markdown("""
 - [Introduction](#introduction)
@@ -12,8 +13,12 @@ st.sidebar.markdown("""
 - [Page Setup](#page-setup)
 """)
 
-# h1 tag. Page title. Should be used only once
-st.title("Streamlit Notes")
+# ignore st.session_state for now, we'll discuss it in dedicated section
+if "user_name" in st.session_state:
+    st.title(f"Welcome {st.session_state.user_name} !! Let's get started")
+else:
+    # h1 tag. Page title. Should be used only once
+    st.title("Streamlit Notes")
 # Wrties muted text, great for providing containt
 st.caption("A sample streamlit page to demo commonly used elements")
 st.page_link(icon=":material/link:", page="https://www.devdanish.in", label="Danish Javed", help="Learn more about the author")
@@ -62,6 +67,15 @@ st.markdown("""
     - wide = container fulid
     - center = container
 """)
+
+@st.dialog(title="Welcome, Reader", width="medium", dismissible=True)
+def collect_user_name():
+    user_name = st.text_input("Please provide your name for custom experience")
+    if user_name:
+        st.session_state.user_name = user_name
+        st.rerun()
+if "user_name" not in st.session_state:
+    collect_user_name()
 
 attach_custom_css()
 

@@ -169,4 +169,5 @@ with open("assets/harley-davidson-x440-brochure-2025.pdf", "rb") as file:
     )
 
 attach_custom_css()
-add_navigation(previous_page="pages/08_Media.py", previous_page_title="Charts")
+add_navigation(previous_page="pages/08_Media.py", previous_page_title="Charts",
+               next_page="pages/10_State & control flow.py", next_page_title="State & Control Flow")
