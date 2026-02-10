@@ -140,15 +140,16 @@ json_data = {"name": "Danish Javed", "profile": "full stack developer",
              "email": "dev.danish.javed@gmail.com",
              "blogs": "https://technotes.devdanish.in"}
 
-st.download_button(label="Download JSON", data=json.dumps(json_data, indent=2), file_name="danish-profile.json")
+st.download_button(label="Download JSON (_text file_)", data=json.dumps(json_data, indent=2), file_name="danish-profile.json")
 
-with open("assets/Rida In Garden.png", "rb") as file:
+with open("assets/harley-davidson-x440-brochure-2025.pdf", "rb") as file:
     st.download_button(
-        label="Download AI Image",
+        label="Download PDF (_binary file_)",
         data=file,
-        file_name="Rida_In_Garden.png",
+        file_name="Harley_Davidson_x440_brochure-2025.pdf",
         mime="image/png"
     )
+
 """)
 
 json_data = {"name": "Danish Javed", "profile": "full stack developer",
@@ -157,13 +158,13 @@ json_data = {"name": "Danish Javed", "profile": "full stack developer",
              "email": "dev.danish.javed@gmail.com",
              "blogs": "https://technotes.devdanish.in"}
 
-st.download_button(label="Download JSON", data=json.dumps(json_data, indent=2), file_name="danish-profile.json")
+st.download_button(label="Download JSON (_text file_)", data=json.dumps(json_data, indent=2), file_name="danish-profile.json")
 
-with open("assets/Rida In Garden.png", "rb") as file:
+with open("assets/harley-davidson-x440-brochure-2025.pdf", "rb") as file:
     st.download_button(
-        label="Download AI Image",
+        label="Download PDF (_binary file_)",
         data=file,
-        file_name="Rida_In_Garden.png",
+        file_name="Harley_Davidson_x440_brochure-2025.pdf",
         mime="image/png"
     )
 
