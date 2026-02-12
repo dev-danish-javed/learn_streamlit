@@ -121,4 +121,4 @@ if st.button("Rerun"):
     st.rerun()
 
 add_navigation(previous_page="pages/09_Upload and Download.py", previous_page_title="Upload and Download",
-               next_page_title="Performance & UX Helpers", next_page="pages/11_Performance & UX Helpers.py")
+               next_page="pages/11_Performace Helpers.py", next_page_title="Performance Helpers")
