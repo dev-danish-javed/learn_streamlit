@@ -1,14 +1,26 @@
 import os
 import time
-from datetime import datetime
 
 import streamlit as st
 import pandas as pd
 from utils import set_page_config, add_navigation, attach_custom_css, get_logger
 
 set_page_config(page_title="Performance Helpers in Streamlit | Danish Javed")
+st.sidebar.title("Performance Helpers")
+
+st.sidebar.markdown("""
+- [Cache data](#st-cache-data)
+    - [Cache expiration](#cache-expiration)
+    - [Cache ttl](#ttl)
+    - [Cache max entries](#max-entries)
+    - [Hash functions](#hash-functions)
+    - [Manual clear](#cleaning-the-cache-manually)
+- [Cache resource](#st-cache-resource)
+""")
+
+
 st.title("Performance Helpers")
-st.caption("Section under progress, please check back soon 🖖🏻")
+st.caption("Helps improve the performance of Streamlit apps by caching the data and resources. This is how lighting fast apps are made")
 
 logger = get_logger("Performace Helpers")
 
@@ -231,8 +243,8 @@ logs "_Loading webseries dataset with modified time..._" once, and thereafter if
 and rerun, it'll log again.
 
 &nbsp;
-#### cleaning the logs manually.
-We can also clean the logs manually. We can do that by calling `st.cache_data.clear()`. Right now we have seen how the 
+#### cleaning the cache manually.
+We can also clean the cache manually. We can do that by calling `st.cache_data.clear()`. Right now we have seen how the 
 function with modified time only refreshes once a day or when a file is changed. Let's implement a button to clear the chache and rerun the page and see what logs say.
 ```python
 if st.button("Clear cache and refresh"):
@@ -244,6 +256,119 @@ if st.button("Clear cache and refresh"):
 if st.button("Clear cache and refresh"):
     st.cache_data.clear()
     st.rerun()
+
+st.divider()
+st.header("`st.cache_resource`")
+st.write("""
+`st.cache_data` saves to compute by memorizing the execution and replaying it. But what if we have some resources like db connection, socket connection, etc. 
+We can't memorize those because they are not serializable. So, we can't use st.cache_data.  
+
+And that is where `st.cache_resource` comes in. It doesn't memorize the execution, but keeps the same object and returns it everytime.
+Consider it a super simplified version of Spring Application Context. It maintains a pool of objects returned by the functions.
+When functions are called, it returns the same object from the pool.
+
+**Also, cached resource is not bound to user session, the same resource is returned for all users.** Try the code below in multiple browsers to understand better
+
+> **Now checkout the code below :material/keyboard_double_arrow_down:**
+""")
+
+st.write("""
+&nbsp;  
+A dummy db connection class""")
+st.code("""
+class DBConnection:
+    connected: bool = False
+    def __init__(self):
+        logger.info("Creating DB connection object")
+
+    def toggle_connection(self):
+        self.connected = not self.connected
+        logger.info("Connected to DB" if self.connected else "Disconnected from DB")
+""")
+
+class DBConnection:
+    connected: bool = False
+    def __init__(self):
+        logger.info("Creating DB connection object")
+
+    def toggle_connection(self):
+        self.connected = not self.connected
+        logger.info("Connected to DB" if self.connected else "Disconnected from DB")\
+
+st.write("""
+&nbsp;  
+A simple function that returns the object to be cached with `@st.cache_resource` decorator.
+""")
+st.code("""
+@st.cache_resource
+def cached_resource_instance():
+    return DBConnection()
+""")
+
+@st.cache_resource
+def cached_resource_instance():
+    return DBConnection()
+
+st.write("""
+&nbsp; 
+
+Now let's try to create three objects and compare if they are the same.
+""")
+st.code("""
+first_cached_resource_instance = cached_resource_instance()
+second_cached_resource_instance = cached_resource_instance()
+third_cached_resource_instance = cached_resource_instance()
+
+st.write(f\"""Are all the objects same = {first_cached_resource_instance is second_cached_resource_instance is third_cached_resource_instance}\""")
+
+""")
+first_cached_resource_instance = cached_resource_instance()
+second_cached_resource_instance = cached_resource_instance()
+third_cached_resource_instance = cached_resource_instance()
+
+st.write(f"""> **Are all the objects same = {first_cached_resource_instance is second_cached_resource_instance is third_cached_resource_instance}**""")
+
+st.write("""
+We have already seen that they are the same object but let's do a simple update test and see if updating one relfects in all of them
+""")
+st.code("""
+
+first_col, second_col, third_col = st.columns(3)
+with first_col:
+    if st.button("Connect first DB"):
+        first_cached_resource_instance.toggle_connection()
+with second_col:
+    if st.button("Connect second DB"):
+        second_cached_resource_instance.toggle_connection()
+with third_col:
+    if st.button("Connect third DB"):
+        third_cached_resource_instance.toggle_connection()
+
+with first_col:
+    st.write("Connection status of the first object : ", first_cached_resource_instance.connected)
+with second_col:
+    st.write("Connection status of the second object : ", second_cached_resource_instance.connected)
+with third_col:
+    st.write("Connection status of the third object : ", third_cached_resource_instance.connected)
+""")
+
+first_col, second_col, third_col = st.columns(3)
+with first_col:
+    if st.button("Connect first DB"):
+        first_cached_resource_instance.toggle_connection()
+with second_col:
+    if st.button("Connect second DB"):
+        second_cached_resource_instance.toggle_connection()
+with third_col:
+    if st.button("Connect third DB"):
+        third_cached_resource_instance.toggle_connection()
+
+with first_col:
+    st.write("Connection status of the first object : ", first_cached_resource_instance.connected)
+with second_col:
+    st.write("Connection status of the second object : ", second_cached_resource_instance.connected)
+with third_col:
+    st.write("Connection status of the third object : ", third_cached_resource_instance.connected)
 
 
 attach_custom_css()
