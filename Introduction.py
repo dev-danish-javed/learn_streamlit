@@ -22,7 +22,7 @@ else:
     # h1 tag. Page title. Should be used only once
     st.title("Streamlit Notes")
 # Wrties muted text, great for providing containt
-st.caption("A sample streamlit page to demo commonly used elements")
+st.caption("This note of mine, covers ~80% of the Streamlit used in real-world apps.")
 st.page_link(icon=":material/link:", page="https://www.devdanish.in", label="Danish Javed", help="Learn more about the author")
 
 # hr tag
@@ -46,7 +46,7 @@ st.text("Here I'm writing the details of my learnings. I'll be using streamlit t
 st.divider()
 
 st.subheader("Installation")
-st.text("Let's get started with installation first.")
+st.text("Let's get started with installation first. Activate your virtual environment and run command below :material/keyboard_double_arrow_down:")
 col1, col2 = st.columns(2)
 with col1:
     st.text(" Add \"streamlit\" in requirements.txt and run command below :material/keyboard_double_arrow_down:")
@@ -62,12 +62,23 @@ st.text("""Like we have head in html, this our place to setup our page.""")
 st.code(body="""import streamlit as st
 st.set_page_config(page_title='Danish Javed',page_icon="👨🏻‍💻", layout='wide')""", language="python")
 st.markdown("""
- Some simple optoins that we have 
+ Some simple options that we have 
  - page_title -> tab title
  - page_icon -> favicon
  - layout _(bootstrap analogy)_
     - wide = container fulid
     - center = container
+""")
+
+st.write("""
+#### Running our first app
+To run our first app, create a home page in root directory with name of your choice.
+Let's call it `app.py` then paste the code from below (_don't worry, we'll understand it all later_).
+Thereafter, open terminal and activate your virtual environment. Then run `streamlit run app.py`
+""")
+st.code("""
+import streamlit as st
+st.title("Hello World")
 """)
 
 @st.dialog(title="Welcome, Reader", width="medium", dismissible=True)

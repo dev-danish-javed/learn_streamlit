@@ -159,4 +159,5 @@ with example_2_col:
 
 
 attach_custom_css()
-add_navigation(previous_page="pages/11_Performace Helpers.py", previous_page_title="Performance & UX Helpers")
+add_navigation(previous_page="pages/11_Performace Helpers.py", previous_page_title="Performance & UX Helpers",
+               next_page="pages/13_Multi-page Routing", next_page_title="Multi-page Routing")
