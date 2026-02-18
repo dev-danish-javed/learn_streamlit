@@ -8,7 +8,7 @@ st.title("Multi-page Routing")
 st.caption("Design user navigation for multiple pages")
 st.write("""We have two options for multi-page routing:
 - Pages based routing
-- Dnynamice routing
+- Dynamice routing
 
 Let's get over them one by one""")
 
@@ -42,5 +42,9 @@ Here is what this apps structure looks like:
     ...
 ```
 """)
+st.divider()
+st.header("Dynamic routing")
 
 attach_custom_css()
+add_navigation(previous_page="pages/12_UX Helpers.py", previous_page_title="UX Helpers",
+               next_page="pages/14_Deployment.py", next_page_title="Deployment")
