@@ -1,14 +1,10 @@
 import time
 
 import streamlit as st
-from utils import attach_custom_css, add_navigation, set_page_config
+from utils import attach_custom_css, add_navigation, sidebar_expander
 import pandas as pd
 
-set_page_config(page_title='Text and Messaging in Streamlit | Danish Javed')
-
-
-st.sidebar.title("Text and Messaging")
-st.sidebar.markdown("""
+sidebar_expander("Text and Messaging", """
 - [Write](#write)
 - [Markdown](#markdown) 
     - [_Hack_](#hack)
@@ -237,8 +233,9 @@ if st.button("Open dialogue"):
 
 attach_custom_css()
 
-add_navigation(previous_page="01_Headings.py",
+add_navigation(previous_page="Headings.py",
                previous_page_title="Headings",
                next_page_title="Structure and Layout",
-               next_page="03_Structure and Layout.py"
+               next_page="Structure and Layout.py"
                )
+

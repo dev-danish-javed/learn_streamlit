@@ -1,11 +1,8 @@
 import streamlit as st
 
-from utils import attach_custom_css, add_navigation, set_page_config
+from utils import attach_custom_css, add_navigation, sidebar_expander
 
-set_page_config(page_title='Structure and Layout in Streamlit | Danish Javed')
-
-st.sidebar.title("Structure the layout")
-st.sidebar.markdown("""
+sidebar_expander("Structure the layout", """
 - [Columns](#columns)
     - [Custom column width](#custom-column-width)
 - [Container](#container) 
@@ -156,8 +153,9 @@ st.sidebar.markdown(""\"
 
 attach_custom_css()
 
-add_navigation(previous_page="02_Text And Messaging.py",
+add_navigation(previous_page="Text And Messaging.py",
                previous_page_title="Text And Messaging",
                next_page_title="Input Widgets",
-               next_page="04_Input Widgets.py"
+               next_page="Input Widgets.py"
                )
+

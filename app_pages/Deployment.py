@@ -1,6 +1,9 @@
 import streamlit as st
-from utils import set_page_config, add_navigation, attach_custom_css
-set_page_config(page_title="Deployment in Streamlit | Danish Javed")
+from utils import add_navigation, attach_custom_css, sidebar_expander
+
+sidebar_expander("Deployment", """
+- [Overview](#deployment)
+""")
 
 st.title("Deployment")
 st.caption("We can deploy our streamlit apps to streamlit community cloud")
@@ -22,4 +25,5 @@ Congrats if you have made it this far. You're now able to develop and deploy you
 ###### Cheers to us 🥂. See you again in my next article. Untill then, happy coding.
 """)
 attach_custom_css()
-add_navigation(previous_page="pages/13_Multi-page Routing.py", previous_page_title="Multi-page Routing")
+add_navigation(previous_page="Multi-page Routing.py", previous_page_title="Multi-page Routing")
+

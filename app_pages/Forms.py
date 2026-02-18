@@ -2,12 +2,9 @@ import time
 
 import streamlit as st
 
-from utils import add_navigation, attach_custom_css, set_page_config
+from utils import add_navigation, attach_custom_css, sidebar_expander
 
-set_page_config(page_title="Forms in Streamlit | Danish Javed")
-
-st.sidebar.title("Forms")
-st.sidebar.markdown("""
+sidebar_expander("Forms", """
 - [Sample Code](#sample-code)
 - [Form Validation](#form-validation)
 """)
@@ -135,7 +132,8 @@ if submitted:
 
 
 attach_custom_css()
-add_navigation(previous_page="04_Input Widgets.py",
+add_navigation(previous_page="Input Widgets.py",
                previous_page_title="Input Widgets",
-               next_page="pages/06_Data Display.py",
+               next_page="Data Display.py",
                next_page_title="Data Display")
+

@@ -2,11 +2,9 @@ import numpy as np
 import streamlit as st
 import pandas as pd
 
-from utils import attach_custom_css, add_navigation, set_page_config
+from utils import attach_custom_css, add_navigation, sidebar_expander
 
-set_page_config(page_title="Charts in Streamlit | Danish Javed")
-st.sidebar.title("Charts")
-st.sidebar.markdown("""
+sidebar_expander("Charts", """
 - [Line Chart](#line-chart)
 - [Bar Chart](#bar-chart)
 - [Area Chart](#area-chart)
@@ -225,4 +223,5 @@ with polished_are_chart:
                  color=["#4f819c", "#939c4f"])
 
 attach_custom_css()
-add_navigation(previous_page_title="Data Display", previous_page="06_Data Display.py", next_page_title="Media", next_page="pages/08_Media.py")
+add_navigation(previous_page_title="Data Display", previous_page="Data Display.py", next_page_title="Media", next_page="Media.py")
+

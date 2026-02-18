@@ -1,8 +1,6 @@
 import streamlit as st
 
-from utils import attach_custom_css, add_navigation, set_page_config
-
-set_page_config(page_title='Headings in Streamlit | Danish Javed')
+from utils import attach_custom_css, add_navigation, sidebar_expander
 
 st.title("Title and headings")
 st.divider()
@@ -45,9 +43,7 @@ st.text("Like I have used right below the page title")
 st.code(body='st.context("A sample streamlit page to demo commonly used elements")')
 
 ## We will discuss this in later sections
-st.sidebar.title("Headings")
-# st.sidebar.page_link("Headings#page-title", label="Page Title")
-st.sidebar.markdown("""
+sidebar_expander("Headings", """
 - [Page Title](#page-title)
 - [Headings](#headings)
     - [Headers](#headers) 
@@ -57,8 +53,9 @@ st.sidebar.markdown("""
 """)
 attach_custom_css()
 
-add_navigation(previous_page="Introduction.py",
+add_navigation(previous_page="Home Page.py",
                previous_page_title="Introduction",
                next_page_title="Text and Messaging",
-               next_page="02_Text And Messaging.py"
+               next_page="Text And Messaging.py"
                )
+

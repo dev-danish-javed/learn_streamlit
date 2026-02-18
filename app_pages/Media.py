@@ -1,11 +1,8 @@
 import streamlit as st
 
-from utils import set_page_config, add_navigation, attach_custom_css
+from utils import add_navigation, attach_custom_css, sidebar_expander
 
-set_page_config(page_title="Media in Streamlit | Danish Javed")
-
-st.sidebar.title("Media")
-st.sidebar.markdown("""
+sidebar_expander("Media", """
 - [Images](#images)
 - [Video](#video)
 - [Audio](#audio)
@@ -94,4 +91,5 @@ st.audio("assets/alexgrohl-burn-the-track.mp3", end_time="20s", loop=True)
 st.audio("assets/alexgrohl-burn-the-track.mp3", end_time="20s", loop=True)
 
 attach_custom_css()
-add_navigation(previous_page="07_Charts.py", previous_page_title="Charts", next_page="pages/09_Upload and Download.py", next_page_title="Upload and Download")
+add_navigation(previous_page="Charts.py", previous_page_title="Charts", next_page="Upload and Download.py", next_page_title="Upload and Download")
+

@@ -1,9 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-from utils import add_navigation, attach_custom_css, set_page_config
-
-set_page_config(page_title="Data Display in Streamlit | Danish Javed")
+from utils import add_navigation, attach_custom_css, sidebar_expander
 
 st.title("Data Display")
 st.caption("Now these are the actual stuff that we'll see more often")
@@ -218,8 +216,7 @@ with st.expander("See raw data"):
 
 
 
-st.sidebar.title("Data Display")
-st.sidebar.markdown("""
+sidebar_expander("Data Display", """
 - [Metrics](#metrics)
 - [Table](#table)
 - [Dataframe](#dataframe)
@@ -227,5 +224,6 @@ st.sidebar.markdown("""
 """)
 
 attach_custom_css()
-add_navigation(previous_page="05_Forms.py", previous_page_title="Forms",
-               next_page="07_Charts.py", next_page_title="Charts")
+add_navigation(previous_page="Forms.py", previous_page_title="Forms",
+               next_page="Charts.py", next_page_title="Charts")
+

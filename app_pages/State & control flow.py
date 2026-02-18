@@ -1,14 +1,10 @@
 import streamlit as st
 
-from utils import set_page_config, add_navigation, attach_custom_css
-
-set_page_config(page_title="Upload and download in Streamlit | Danish Javed")
+from utils import add_navigation, attach_custom_css, sidebar_expander
 
 attach_custom_css()
 
-
-st.sidebar.title("State and control flow")
-st.sidebar.markdown("""
+sidebar_expander("State and control flow", """
 - [Rerun](#st-rerun)
 - [Stop](#st-stop)
 - [Session State](#session-state)
@@ -120,5 +116,6 @@ st.write(f"Hello {st.session_state.get("session_demo_user_name", "Reader")}")
 if st.button("Rerun"):
     st.rerun()
 
-add_navigation(previous_page="pages/09_Upload and Download.py", previous_page_title="Upload and Download",
-               next_page="pages/11_Performace Helpers.py", next_page_title="Performance Helpers")
+add_navigation(previous_page="Upload and Download.py", previous_page_title="Upload and Download",
+               next_page="Performace Helpers.py", next_page_title="Performance Helpers")
+

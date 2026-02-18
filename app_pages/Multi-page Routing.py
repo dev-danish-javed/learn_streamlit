@@ -1,8 +1,10 @@
 import streamlit as st
-from utils import set_page_config, add_navigation, attach_custom_css
+from utils import add_navigation, attach_custom_css, sidebar_expander
 
-set_page_config(page_title="Multi-page Routing in Streamlit | Danish Javed")
-st.sidebar.title("Multi-page Routing")
+sidebar_expander("Multi-page Routing", """
+- [Pages-based Routing](#pages-based-routing)
+- [Dynamic Routing](#dynamic-routing)
+""")
 
 st.title("Multi-page Routing")
 st.caption("Design user navigation for multiple pages")
@@ -23,7 +25,7 @@ Thereafter we create a pages directory and keep all our pages inside it.
 Here's an example:
 ```
 - streamlit_app/
-    - app.py
+    - Home Page.py
     - pages/
         - page1.py
         - page2.py
@@ -32,13 +34,14 @@ The sidebar navigation will be generated automatically based on the directory st
 To manage the order of pages we attach numeric prefixes to the page filenames.  
 
 &nbsp;   
-Here is what this apps structure looks like:
+Here is what this app's structure looks like when using programmatic routing:
 ```
 - learn-stramlit
-- Introduction.py
-- pages/
-    - 01_Headings.py
-    - 02_Text And Messaging.py
+- Home Page.py
+- app_pages/
+    - Home Page.py
+    - Headings.py
+    - Text And Messaging.py
     ...
 ```
 """)
@@ -46,5 +49,6 @@ st.divider()
 st.header("Dynamic routing")
 
 attach_custom_css()
-add_navigation(previous_page="pages/12_UX Helpers.py", previous_page_title="UX Helpers",
-               next_page="pages/14_Deployment.py", next_page_title="Deployment")
+add_navigation(previous_page="UX Helpers.py", previous_page_title="UX Helpers",
+               next_page="Deployment.py", next_page_title="Deployment")
+

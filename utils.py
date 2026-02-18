@@ -2,6 +2,8 @@ import streamlit as st
 import logging
 import sys
 
+PAGE_DIR = "app_pages"
+
 def set_page_config(page_title:str, layout:str="wide"):
     st.set_page_config(page_title=page_title, layout=layout, page_icon="assets/app_logo.png")
 
@@ -87,23 +89,36 @@ def add_navigation(previous_page_title:str = None,
         if previous_page:
             with previous_col:
                 if st.button(f":material/arrow_back_ios: Previous : {previous_page_title}"):
-                    prev_page_path = f"pages/{previous_page}" if previous_page[0].isdigit() else previous_page
+                    prev_page_path = _resolve_page_path(previous_page)
                     st.switch_page(prev_page_path)
 
         if next_page:
             with next_col:
                 if st.button(f"Next : {next_page_title} :material/arrow_forward_ios:"):
-                    next_page_path = f"pages/{next_page}" if next_page[0].isdigit() else next_page
+                    next_page_path = _resolve_page_path(next_page)
                     st.switch_page(next_page_path)
     else:
         if previous_page:
             if st.button(f":material/arrow_back_ios: Previous : {previous_page_title}"):
-                prev_page_path = f"pages/{previous_page}" if previous_page[0].isdigit() else previous_page
+                prev_page_path = _resolve_page_path(previous_page)
                 st.switch_page(prev_page_path)
         if next_page:
             if st.button(f"Next : {next_page_title} :material/arrow_forward_ios:"):
-                next_page_path = f"pages/{next_page}" if next_page[0].isdigit() else next_page
+                next_page_path = _resolve_page_path(next_page)
                 st.switch_page(next_page_path)
+
+def sidebar_expander(title: str, content: str, expanded: bool = True):
+    with st.sidebar.expander(title, expanded=expanded):
+        if content:
+            st.markdown(content)
+
+def _resolve_page_path(page: str) -> str:
+    normalized = page.replace("\\", "/")
+    if normalized.startswith("pages/"):
+        normalized = normalized.replace("pages/", f"{PAGE_DIR}/", 1)
+    if "/" not in normalized:
+        return f"{PAGE_DIR}/{normalized}"
+    return normalized
 def get_logger(name="app"):
     logger = logging.getLogger(name)
     logger.setLevel(logging.INFO)
@@ -117,3 +132,4 @@ def get_logger(name="app"):
         logger.addHandler(handler)
 
     return logger
+

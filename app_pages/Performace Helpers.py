@@ -3,12 +3,9 @@ import time
 
 import streamlit as st
 import pandas as pd
-from utils import set_page_config, add_navigation, attach_custom_css, get_logger
+from utils import add_navigation, attach_custom_css, get_logger, sidebar_expander
 
-set_page_config(page_title="Performance Helpers in Streamlit | Danish Javed")
-st.sidebar.title("Performance Helpers")
-
-st.sidebar.markdown("""
+sidebar_expander("Performance Helpers", """
 - [Cache data](#st-cache-data)
     - [Cache expiration](#cache-expiration)
     - [Cache ttl](#ttl)
@@ -372,5 +369,6 @@ with third_col:
 
 
 attach_custom_css()
-add_navigation(previous_page="pages/10_State & control flow.py", previous_page_title="State & Control Flow",
-               next_page="pages/12_UX Helpers.py", next_page_title="UX Helpers")
+add_navigation(previous_page="State & control flow.py", previous_page_title="State & Control Flow",
+               next_page="UX Helpers.py", next_page_title="UX Helpers")
+

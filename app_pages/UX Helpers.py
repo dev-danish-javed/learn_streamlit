@@ -1,12 +1,9 @@
 import streamlit as st
 import time
 
-from utils import set_page_config, add_navigation, attach_custom_css
+from utils import add_navigation, attach_custom_css, sidebar_expander
 
-set_page_config(page_title="Performance & UX Helpers in Streamlit | Danish Javed")
-
-st.sidebar.title("UX Helpers")
-st.sidebar.markdown("""
+sidebar_expander("UX Helpers", """
 - [Spinner](#spinner)
 - [Progress](#progress)
 - [Toaster](#toaster)
@@ -159,5 +156,6 @@ with example_2_col:
 
 
 attach_custom_css()
-add_navigation(previous_page="pages/11_Performace Helpers.py", previous_page_title="Performance & UX Helpers",
-               next_page="pages/13_Multi-page Routing", next_page_title="Multi-page Routing")
+add_navigation(previous_page="Performace Helpers.py", previous_page_title="Performance & UX Helpers",
+               next_page="Multi-page Routing.py", next_page_title="Multi-page Routing")
+

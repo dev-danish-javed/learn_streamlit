@@ -36,7 +36,7 @@ Want to see what the hype is about? It's super easy:
 
 3.  **Launch the magic:**
     ```bash
-    streamlit run Introduction.py
+    streamlit run Home Page.py
     ```
 
 ## 💡 Why Streamlit?

@@ -3,12 +3,9 @@ import json
 import streamlit as st
 import pandas as pd
 
-from utils import set_page_config, add_navigation, attach_custom_css
+from utils import add_navigation, attach_custom_css, sidebar_expander
 
-set_page_config(page_title="Upload and download in Streamlit | Danish Javed")
-
-st.sidebar.title("Upload and Download")
-st.sidebar.markdown("""
+sidebar_expander("Upload and Download", """
 - [Upload](#upload)
 - [Download Button](#download-button)
 """)
@@ -169,5 +166,6 @@ with open("assets/harley-davidson-x440-brochure-2025.pdf", "rb") as file:
     )
 
 attach_custom_css()
-add_navigation(previous_page="pages/08_Media.py", previous_page_title="Charts",
-               next_page="pages/10_State & control flow.py", next_page_title="State & Control Flow")
+add_navigation(previous_page="Media.py", previous_page_title="Charts",
+               next_page="State & control flow.py", next_page_title="State & Control Flow")
+
